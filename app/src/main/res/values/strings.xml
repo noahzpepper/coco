@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">CoCo</string>
+    <string name="UserAccount"> User Account </string>
+    <string name="Name"> Name </string>
+    <string name="Picture"> Profile Picture </string>
+    <string name="Ingredient"> Blocked Ingredients </string>
+    <string name="Company"> Blocked Companies </string>
+
+    <string name="Settings"> Search Filters </string>
+    <string name="Sort"> Sort Results by: </string>
+    <string name="price_high"> Prices high to low. </string>
+    <string name="price_low"> Prices low to high. </string>
+    <string name="overall_rating"> Overall rating. </string>
+    <string name="skin_rating"> Skin match rating. </string>
+    <string name="Price"> Price Range: </string>
+    <string name="eco_certified"> Only include eco certified products. </string>
 </resources>
