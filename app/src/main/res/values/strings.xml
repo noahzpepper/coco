@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CoCo</string>
+    <string name="tab_text_1">All</string>
+    <string name="tab_text_2">Face</string>
+    <string name="tab_text_3">Eyes</string>
+<!--    <string name="tab_text_4">Lips</string>-->
 </resources>
