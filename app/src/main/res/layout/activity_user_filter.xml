@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seach_title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserFilterActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:srcCompat="@drawable/backarrowbutton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/Settings"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/eco_certified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#615855"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/eco_certified"
+        android:textColor="#615855"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <ImageButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eco_certified"
+        app:srcCompat="@drawable/savebutton" />
+
+    <TextView
+        android:id="@+id/filter_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/Sort"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <RadioButton
+        android:id="@+id/sort1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/price_high"
+        android:textColor="#615855"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/filter_sort"
+        app:layout_constraintTop_toBottomOf="@+id/filter_sort" />
+
+    <RadioButton
+        android:id="@+id/sort2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/price_low"
+        android:textColor="#615855"
+        app:layout_constraintStart_toStartOf="@+id/sort1"
+        app:layout_constraintTop_toBottomOf="@+id/sort1" />
+
+    <RadioButton
+        android:id="@+id/sort4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/skin_rating"
+        android:textColor="#615855"
+        app:layout_constraintStart_toStartOf="@+id/sort3"
+        app:layout_constraintTop_toBottomOf="@+id/sort3" />
+
+    <RadioButton
+        android:id="@+id/sort3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/overall_rating"
+        android:textColor="#615855"
+        app:layout_constraintStart_toStartOf="@+id/sort2"
+        app:layout_constraintTop_toBottomOf="@+id/sort2" />
+
+    <TextView
+        android:id="@+id/price_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/Price"
+        android:textColor="#070404"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sort4" />
+
+    <SeekBar
+        android:id="@+id/seekBar5"
+        style="@android:style/Widget.Material.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:max="@android:integer/status_bar_notification_info_maxnum"
+        android:progress="@android:integer/config_longAnimTime"
+        android:progressTint="#E91E63"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="376dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
