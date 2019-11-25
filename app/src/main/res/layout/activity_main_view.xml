@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFDFD"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".MainViewActivity">
 
 
     <ImageView
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pink_bar" />
+        app:srcCompat="@drawable/pink_header" />
 
     <ImageButton
         android:id="@+id/account_button"
@@ -29,7 +29,7 @@
         android:background="?android:selectableItemBackground"
         app:layout_constraintEnd_toEndOf="@+id/pink_bar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/account_button" />
+        app:srcCompat="@drawable/accountbutton" />
 
     <ImageButton
         android:id="@+id/filter_button"
@@ -49,6 +49,6 @@
         android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="@+id/pink_bar"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/coco_sketch" />
+        app:srcCompat="@drawable/coco_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

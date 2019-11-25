@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainViewActivity">
 
     <include
         layout="@layout/activity_main_view"
@@ -54,7 +54,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/pink_bar"
+        android:background="@drawable/pink_header"
         app:layout_constraintStart_toStartOf="@+id/pink_bar"
         app:layout_constraintTop_toBottomOf="@+id/relLayout1"
         app:tabIndicatorColor="@color/colorPrimary"
