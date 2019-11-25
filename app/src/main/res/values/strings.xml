@@ -115,4 +115,8 @@
         "safe for contact lens wearers and oil free."
     </string>
     <string name="ingredients_list">Water, Cyclopentasiloxane, Cyclohexasiloxane, Aloe Vera (Aloe Barbadensis) Leaf Juice, Benzyl Alcohol, Sodium Chloride, Dipropylene Glycol, Poloxamer 182, Allantoin, Tripotassium EDTA, Benzalkonium Chloride Solution, Glycerin, Cucumber (Cucumis Sativus) Extract (Cucumis Sativus), Potassium Phosphate, Dipotassium Phosphate</string>
+    <string name="tab_text_1">All</string>
+    <string name="tab_text_2">Face</string>
+    <string name="tab_text_3">Eyes</string>
+<!--    <string name="tab_text_4">Lips</string>-->
 </resources>

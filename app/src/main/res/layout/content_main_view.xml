@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainViewActivity">
+
+    <include
+        layout="@layout/activity_main_view"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/rectangle_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="10dp"
+        android:id="@+id/relLayout1">
+
+        <ImageView
+            android:id="@+id/ic_magnify"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/magnify" />
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/ic_magnify"
+            android:layout_marginLeft="2dp"
+            android:layout_marginBottom="24dp"
+            android:layout_centerVertical="true"
+            android:textSize="26sp"
+            android:textColor="#656565"
+            android:singleLine="true"
+            android:id="@+id/input_search"
+            android:background="@null"
+            android:hint="Search..."
+            android:imeOptions="actionSearch"/>
+    </RelativeLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pink_header"
+        app:layout_constraintStart_toStartOf="@+id/pink_bar"
+        app:layout_constraintTop_toBottomOf="@+id/relLayout1"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/CustomTabText"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"></androidx.viewpager.widget.ViewPager>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.userAccountButton).setOnClickListener(this);
         findViewById(R.id.userFilterButton).setOnClickListener(this);
         findViewById(R.id.detailedViewButton).setOnClickListener(this);
+        findViewById(R.id.mainViewButton).setOnClickListener(this);
 
     }
 
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.detailedViewButton:
                 startActivity(new Intent(MainActivity.this, DetailedViewActivity.class));
+                break;
+            case R.id.mainViewButton:
+                startActivity(new Intent(MainActivity.this, MainViewActivity.class));
                 break;
         }
     }
