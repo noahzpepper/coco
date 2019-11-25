@@ -2,6 +2,7 @@ package com.coco.coco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +27,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.userAccountButton).setOnClickListener(this);
+        findViewById(R.id.userFilterButton).setOnClickListener(this);
+        findViewById(R.id.detailedViewButton).setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.userAccountButton:
+                startActivity(new Intent(MainActivity.this, UserAccountActivity.class));
+                break;
+            case R.id.userFilterButton:
+                startActivity(new Intent(MainActivity.this, UserFilterActivity.class));
+                break;
+            case R.id.detailedViewButton:
+                startActivity(new Intent(MainActivity.this, DetailedViewActivity.class));
+                break;
+        }
     }
 }

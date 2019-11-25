@@ -10,9 +10,38 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/userAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/UserAccount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/detailedViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/title_activity_detailed_view"
+        app:layout_constraintStart_toEndOf="@+id/userAccountButton"
+        app:layout_constraintTop_toTopOf="@+id/userAccountButton" />
+
+    <Button
+        android:id="@+id/userFilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="User Filter"
+        app:layout_constraintStart_toStartOf="@+id/userAccountButton"
+        app:layout_constraintTop_toBottomOf="@+id/userAccountButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

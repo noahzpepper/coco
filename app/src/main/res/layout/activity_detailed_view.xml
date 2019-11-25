@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFDFD"
     android:fitsSystemWindows="true"
-    tools:context=".DetailedView">
+    tools:context=".DetailedViewActivity">
 
 
     <include layout="@layout/content_detailed_view" />

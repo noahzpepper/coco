@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.security.acl.Group;
 import java.util.ArrayList;
 
-public class DetailedView extends AppCompatActivity {
+public class DetailedViewActivity extends AppCompatActivity {
 
     private Button descriptionButton;
     private boolean showDescription = false;
