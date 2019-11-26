@@ -4,49 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".MainViewActivity">
 
-    <include
-        layout="@layout/activity_main_view"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainTopBarConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFDFD"
+        android:fitsSystemWindows="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/pink_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pink_header" />
+
+        <ImageView
+            android:id="@+id/mainAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="@+id/pink_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/accountbutton" />
+
+
+        <ImageView
+            android:id="@+id/mainFilterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="@+id/pink_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/filter" />
+
+        <ImageView
+            android:id="@+id/imageView101010101"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="@+id/pink_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/coco_logo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
+        android:id="@+id/relLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:background="@drawable/rectangle_gray"
-        app:layout_constraintTop_toTopOf="parent"
         android:elevation="10dp"
-        android:id="@+id/relLayout1">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTopBarConstraint">
+
+        <AutoCompleteTextView
+            android:id="@+id/input_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/ic_magnify"
+            android:background="@null"
+            android:hint="Search..."
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="#656565"
+            android:textSize="26sp" />
 
         <ImageView
             android:id="@+id/ic_magnify"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="13dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="13dp"
             android:src="@drawable/magnify" />
-
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/ic_magnify"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="24dp"
-            android:layout_centerVertical="true"
-            android:textSize="26sp"
-            android:textColor="#656565"
-            android:singleLine="true"
-            android:id="@+id/input_search"
-            android:background="@null"
-            android:hint="Search..."
-            android:imeOptions="actionSearch"/>
     </RelativeLayout>
 
 
@@ -55,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/pink_header"
-        app:layout_constraintStart_toStartOf="@+id/pink_bar"
+        app:layout_constraintStart_toStartOf="@id/mainTopBarConstraint"
         app:layout_constraintTop_toBottomOf="@+id/relLayout1"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabTextAppearance="@style/CustomTabText"
@@ -64,10 +113,10 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></androidx.viewpager.widget.ViewPager>
+        app:layout_constraintStart_toStartOf="@id/mainTopBarConstraint"
+        app:layout_constraintTop_toBottomOf="@id/tabs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

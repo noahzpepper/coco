@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/account_button" />
 
     <ImageButton
-        android:id="@+id/back_button"
+        android:id="@+id/detailedViewBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/back_arrow" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/cocosketch02020"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
