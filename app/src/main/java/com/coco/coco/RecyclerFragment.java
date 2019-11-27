@@ -29,7 +29,7 @@ public class RecyclerFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.recycler_view, container, false);
         recyclerView = rootView.findViewById(R.id.recycler_view);
 
-        mAdapter = new ProductAdapter(productList);
+        mAdapter = new ProductAdapter(productList, getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
