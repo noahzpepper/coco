@@ -7,66 +7,53 @@
     tools:context=".UserAccountActivity">
 
     <ImageView
-        android:id="@+id/navbarLeft"
+        android:id="@+id/navbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/rectangle" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/userScrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangle" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/backButton"
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbarLeft"
-        app:layout_constraintStart_toStartOf="@+id/navbarLeft"
-        app:layout_constraintTop_toTopOf="@+id/navbarLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintStart_toStartOf="@+id/navbar"
+        app:layout_constraintTop_toTopOf="@+id/navbar"
         app:srcCompat="@drawable/backarrowbutton" />
 
     <TextView
-        android:id="@+id/UserAccount"
+        android:id="@+id/titleUserAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:text="@string/UserAccount"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbarLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/navbarLeft" />
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/navbar" />
 
     <ScrollView
         android:id="@+id/userScrollView"
-        android:layout_width="408dp"
-        android:layout_height="668dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:scrollbarSize="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936">
+        app:layout_constraintTop_toBottomOf="@+id/navbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteY="1dp">
 
             <TextView
