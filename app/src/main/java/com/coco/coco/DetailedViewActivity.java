@@ -97,5 +97,13 @@ public class DetailedViewActivity extends AppCompatActivity {
                 }
             }
         }); //closing the setOnClickListener method
+
+
+        findViewById(R.id.detailedViewBackButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 }

@@ -15,7 +15,7 @@
         app:srcCompat="@drawable/rectangle" />
 
     <ImageButton
-        android:id="@+id/backButton"
+        android:id="@+id/userAccountBackButton"
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintStart_toEndOf="@+id/userAccountBackButton"
         app:layout_constraintTop_toTopOf="@+id/navbar" />
 
     <ScrollView
