@@ -20,7 +20,7 @@
         android:background="@drawable/rectangle_gray"
         app:layout_constraintTop_toTopOf="parent"
         android:elevation="10dp"
-        android:id="@+id/relLayout1">
+        android:id="@+id/review_box">
 
         <ImageView
             android:id="@+id/ic_magnify"
