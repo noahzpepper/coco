@@ -2,21 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/seach_title"
+    android:id="@+id/titleSearchFilter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserFilterActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rectangle" />
-
-    <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/navbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,13 +16,13 @@
         app:srcCompat="@drawable/rectangle" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/backButton"
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+        app:layout_constraintBottom_toBottomOf="@+id/navbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/navbar"
         app:srcCompat="@drawable/backarrowbutton" />
 
     <TextView
@@ -40,27 +32,30 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/Settings"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/navbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/eco_certified"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         android:buttonTint="#615855"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/eco_certified"
         android:textColor="#615855"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
 
     <ImageButton
-        android:id="@+id/save_button"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -72,96 +67,117 @@
         app:srcCompat="@drawable/savebutton" />
 
     <TextView
-        android:id="@+id/filter_sort"
+        android:id="@+id/titleSortResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/Sort"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/navbar" />
 
     <RadioButton
-        android:id="@+id/sort1"
+        android:id="@+id/radioSort1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:clickable="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/price_high"
         android:textColor="#615855"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/filter_sort"
-        app:layout_constraintTop_toBottomOf="@+id/filter_sort" />
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/titleSortResults"
+        app:layout_constraintTop_toBottomOf="@+id/titleSortResults"
+        android:focusable="true" />
 
     <RadioButton
-        android:id="@+id/sort2"
+        android:id="@+id/radioSort2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:clickable="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/price_low"
         android:textColor="#615855"
-        app:layout_constraintStart_toStartOf="@+id/sort1"
-        app:layout_constraintTop_toBottomOf="@+id/sort1" />
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/radioSort1"
+        app:layout_constraintTop_toBottomOf="@+id/radioSort1"
+        android:focusable="true" />
 
     <RadioButton
-        android:id="@+id/sort4"
+        android:id="@+id/radioSort4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:checked="false"
+        android:clickable="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/skin_rating"
         android:textColor="#615855"
-        app:layout_constraintStart_toStartOf="@+id/sort3"
-        app:layout_constraintTop_toBottomOf="@+id/sort3" />
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/radioSort5"
+        app:layout_constraintTop_toBottomOf="@+id/radioSort5"
+        android:focusable="true" />
 
     <RadioButton
-        android:id="@+id/sort3"
+        android:id="@+id/radioSort5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:clickable="true"
         android:fontFamily="@font/montserrat"
         android:text="@string/overall_rating"
         android:textColor="#615855"
-        app:layout_constraintStart_toStartOf="@+id/sort2"
-        app:layout_constraintTop_toBottomOf="@+id/sort2" />
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/radioSort2"
+        app:layout_constraintTop_toBottomOf="@+id/radioSort2"
+        android:focusable="true" />
 
     <TextView
-        android:id="@+id/price_range"
+        android:id="@+id/titlePriceRange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/Price"
         android:textColor="#070404"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sort4" />
+        app:layout_constraintTop_toBottomOf="@+id/radioSort4" />
 
     <SeekBar
         android:id="@+id/seekBar5"
-        style="@android:style/Widget.Material.SeekBar.Discrete"
+        style="@android:style/Widget.Material.SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="40dp"
-        android:max="@android:integer/status_bar_notification_info_maxnum"
-        android:progress="@android:integer/config_longAnimTime"
+        android:clickable="true"
+        android:focusable="true"
+        android:indeterminate="true"
+        android:isScrollContainer="true"
+        android:longClickable="false"
+        android:max="100"
+        android:progress="@android:integer/config_shortAnimTime"
         android:progressTint="#E91E63"
         android:scrollbars="vertical"
+        android:secondaryProgress="@android:integer/config_shortAnimTime"
+        android:splitTrack="false"
+        android:verticalScrollbarPosition="right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="376dp" />
+        app:layout_constraintTop_toBottomOf="@+id/titlePriceRange" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
