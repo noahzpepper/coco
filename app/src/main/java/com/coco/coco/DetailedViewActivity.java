@@ -102,7 +102,6 @@ public class DetailedViewActivity extends AppCompatActivity {
         reviewInfo.add(star4);
         reviewInfo.add(star5);
 
-        backButton = (ImageButton) findViewById(R.id.back_button);
         accountButton = (ImageButton) findViewById(R.id.account_button);
 
         // Press description button to drop down product description
@@ -160,14 +159,6 @@ public class DetailedViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(DetailedViewActivity.this, AddReviewActivity.class));
-            }
-        }); //closing the setOnClickListener method
-
-        // Press back  button to finish this activity
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         }); //closing the setOnClickListener method
 
