@@ -118,5 +118,6 @@
     <string name="tab_text_1">All</string>
     <string name="tab_text_2">Face</string>
     <string name="tab_text_3">Eyes</string>
-<!--    <string name="tab_text_4">Lips</string>-->
+    <string name="sample_review">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <!--    <string name="tab_text_4">Lips</string>-->
 </resources>
