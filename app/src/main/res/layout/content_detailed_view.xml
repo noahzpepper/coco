@@ -22,37 +22,38 @@
             app:srcCompat="@drawable/placeholder" />
 
         <TextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/detailProductName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="75dp"
             android:fontFamily="@font/montserrat"
+            android:maxLines="3"
             android:text="Product Name - Cosmetic Product"
             android:textColor="#303030"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/placeholder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/product_image"
+            android:id="@+id/detailProductImage"
             android:layout_width="150dp"
             android:layout_height="155dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="115dp"
+            android:layout_marginStart="2dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/placeholder_image" />
+            app:layout_constraintStart_toStartOf="@+id/frame"
+            app:layout_constraintTop_toTopOf="@+id/frame"
+            app:srcCompat="@drawable/no_image" />
 
         <ImageView
             android:id="@+id/frame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="115dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductName"
             app:srcCompat="@drawable/frame" />
 
         <ImageView
@@ -62,7 +63,7 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toEndOf="@+id/frame"
-            app:layout_constraintTop_toBottomOf="@+id/product_name"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductName"
             app:srcCompat="@drawable/star" />
 
         <ImageView
@@ -76,7 +77,7 @@
             app:srcCompat="@drawable/star" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/detailRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -85,10 +86,10 @@
             android:text="0.0     overall"
             android:textColor="#525252"
             app:layout_constraintStart_toEndOf="@+id/star1"
-            app:layout_constraintTop_toBottomOf="@+id/product_name" />
+            app:layout_constraintTop_toBottomOf="@+id/detailProductName" />
 
         <TextView
-            android:id="@+id/rating2"
+            android:id="@+id/detailSkintoneMatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -97,10 +98,10 @@
             android:text="0.0     skin tone match"
             android:textColor="#525252"
             app:layout_constraintStart_toEndOf="@+id/star2"
-            app:layout_constraintTop_toBottomOf="@+id/rating" />
+            app:layout_constraintTop_toBottomOf="@+id/detailRating" />
 
         <TextView
-            android:id="@+id/best_price"
+            android:id="@+id/detailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
@@ -112,143 +113,138 @@
             app:layout_constraintTop_toBottomOf="@+id/star2" />
 
         <ImageView
-            android:id="@+id/company_logo"
+            android:id="@+id/detailSellerImage"
             android:layout_width="33dp"
-            android:layout_height="28dp"
+            android:layout_height="33dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toEndOf="@+id/best_price"
-            app:layout_constraintTop_toBottomOf="@+id/rating2"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toEndOf="@+id/detailPrice"
+            app:layout_constraintTop_toBottomOf="@+id/detailSkintoneMatch" />
 
         <ImageView
-            android:id="@+id/buy_option1"
+            android:id="@+id/detailSellerContainer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frame"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/company_logo2"
+            android:id="@+id/detailSellerImage1"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option1"
-            app:layout_constraintTop_toTopOf="@+id/buy_option1"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer1"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer1" />
 
         <ImageView
-            android:id="@+id/buy_option2"
+            android:id="@+id/detailSellerContainer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="25dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/description_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option3"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer2"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/buy_option3"
+            android:id="@+id/detailSellerContainer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option1"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer1"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/company_logo3"
+            android:id="@+id/detailSellerImage2"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option3"
-            app:layout_constraintTop_toTopOf="@+id/buy_option3"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer2"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer2" />
 
         <ImageView
-            android:id="@+id/company_logo4"
+            android:id="@+id/detailSellerImage3"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option2"
-            app:layout_constraintTop_toTopOf="@+id/buy_option2"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer3"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer3" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/detailSellerText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
             android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option1"
-            app:layout_constraintStart_toEndOf="@+id/company_logo2"
-            app:layout_constraintTop_toTopOf="@+id/buy_option1"
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer1"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage1"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer1"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/detailSellerText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
-            android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option3"
-            app:layout_constraintStart_toEndOf="@+id/company_logo3"
-            app:layout_constraintTop_toTopOf="@+id/buy_option3" />
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer2"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage2"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer2" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/detailSellerText3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
             android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option2"
-            app:layout_constraintStart_toEndOf="@+id/company_logo4"
-            app:layout_constraintTop_toTopOf="@+id/buy_option2" />
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer3"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage3"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer3" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/detailEcoCertified"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/buy_option1"
+            app:layout_constraintBottom_toTopOf="@+id/detailSellerContainer1"
             app:layout_constraintStart_toEndOf="@+id/frame"
-            app:layout_constraintTop_toBottomOf="@+id/company_logo"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerImage"
             app:srcCompat="@drawable/eco_certified" />
 
         <Button
@@ -266,7 +262,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/placeholder"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option2" />
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer3" />
 
         <Button
             android:id="@+id/ingredients_button"
@@ -340,9 +336,9 @@
             android:id="@+id/images_scroll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -355,33 +351,38 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/user_image1" />
+                    android:id="@+id/detailCommunityImage1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/no_image" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:id="@+id/detailCommunityImage2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image2" />
+                    android:src="@drawable/no_image" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:id="@+id/detailCommunityImage3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image1" />
+                    android:src="@drawable/no_image" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:id="@+id/detailCommunityImage4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image2" />
+                    android:src="@drawable/no_image" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:id="@+id/detailCommunityImage5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image1" />
+                    android:src="@drawable/no_image" />
             </LinearLayout>
         </HorizontalScrollView>
 

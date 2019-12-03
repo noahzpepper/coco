@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.coco.coco.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -133,10 +134,8 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         if (uid == null) { return; }
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = root.child("users").child(uid);
-        userRef.child("name").setValue(name);
-        userRef.child("photoUrl").setValue("");
-        userRef.child("blockedCompanies").setValue(false);
-        userRef.child("blockedIngredients").setValue(false);
+        User user = new User(name, null, new ArrayList<String>(), new ArrayList<String>());
+        userRef.setValue(user);
     }
 
     private void signIn(String email, String password) {

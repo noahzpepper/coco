@@ -7,11 +7,17 @@
     tools:context=".UserAccountActivity">
 
     <ImageView
-        android:id="@+id/navbar"
+        android:id="@+id/accountNavbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rectangle" />
+
+    <ImageView
+        android:id="@+id/accountNavbar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/rectangle" />
 
     <ImageButton
@@ -19,9 +25,9 @@
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
-        app:layout_constraintStart_toStartOf="@+id/navbar"
-        app:layout_constraintTop_toTopOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
+        app:layout_constraintStart_toStartOf="@+id/accountNavbar"
+        app:layout_constraintTop_toTopOf="@+id/accountNavbar"
         app:srcCompat="@drawable/backarrowbutton" />
 
     <TextView
@@ -31,11 +37,11 @@
         android:fontFamily="@font/montserrat"
         android:text="@string/UserAccount"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/userAccountBackButton"
-        app:layout_constraintTop_toTopOf="@+id/navbar" />
+        app:layout_constraintTop_toTopOf="@+id/accountNavbar" />
 
     <ScrollView
         android:id="@+id/userScrollView"
@@ -46,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar"
+        app:layout_constraintTop_toBottomOf="@+id/accountNavbar"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,13 +116,13 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="20dp"
                 android:background="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/inputPicture"
+                app:layout_constraintBottom_toTopOf="@+id/accountInputPicture"
                 app:layout_constraintStart_toEndOf="@+id/titlePicture"
                 app:layout_constraintTop_toTopOf="@+id/titlePicture"
                 app:srcCompat="@drawable/edit_icon" />
 
             <ImageView
-                android:id="@+id/inputPicture"
+                android:id="@+id/accountInputPicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -134,7 +140,7 @@
                 android:text="@string/Ingredient"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/titlePicture"
-                app:layout_constraintTop_toBottomOf="@+id/inputPicture" />
+                app:layout_constraintTop_toBottomOf="@+id/accountInputPicture" />
 
             <ImageButton
                 android:id="@+id/addIngredientButton"

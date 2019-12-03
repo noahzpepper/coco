@@ -10,10 +10,15 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import com.coco.coco.model.Price;
+import com.coco.coco.model.Product;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainViewActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MAIN";
+
+    public static final String[] CATEGORIES = new String[]{"All", "Face", "Eyes", "Lips", "Brows", "Skincare"};
 
     ImageView accountButton, filterButton;
 
@@ -23,12 +28,9 @@ public class MainViewActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.content_main_view);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.addTab(tabLayout.newTab().setText("All"));
-        tabLayout.addTab(tabLayout.newTab().setText("Face"));
-        tabLayout.addTab(tabLayout.newTab().setText("Eyes"));
-        tabLayout.addTab(tabLayout.newTab().setText("Lips"));
-        tabLayout.addTab(tabLayout.newTab().setText("Brows"));
-        tabLayout.addTab(tabLayout.newTab().setText("Skincare"));
+        for (String category : CATEGORIES) {
+            tabLayout.addTab(tabLayout.newTab().setText(category));
+        }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         findViewById(R.id.tabs).bringToFront();
 
@@ -36,13 +38,29 @@ public class MainViewActivity extends AppCompatActivity implements View.OnClickL
         TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(tabsAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
 
         accountButton = findViewById(R.id.mainAccountButton);
         filterButton = findViewById(R.id.mainFilterButton);
 
-        //mainIncluded.setOnClickListener(this);
         accountButton.setOnClickListener(this);
         filterButton.setOnClickListener(this);
+
+        Price.initializeLogos();
+
+        //TEMPORARY - remove this
+        for (int i = 0; i < 3; i++) {
+            new ProductDatabaseUtil().run();
+        }
     }
 
     @Override

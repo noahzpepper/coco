@@ -8,7 +8,7 @@
     tools:context=".UserFilterActivity">
 
     <ImageView
-        android:id="@+id/navbar"
+        android:id="@+id/accountNavbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/rectangle" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/filterImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,26 +28,26 @@
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/navbar"
+        app:layout_constraintTop_toTopOf="@+id/accountNavbar"
         app:srcCompat="@drawable/backarrowbutton" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/detailSellerText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:text="@string/Settings"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/userFilterBackButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/eco_certified"
+        android:id="@+id/cardEcoCertifiedImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -60,10 +60,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
+        app:layout_constraintTop_toBottomOf="@+id/filterPriceSeekBar" />
 
     <ImageButton
-        android:id="@+id/saveButton"
+        android:id="@+id/filterSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -71,11 +71,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eco_certified"
+        app:layout_constraintTop_toBottomOf="@+id/cardEcoCertifiedImage"
         app:srcCompat="@drawable/savebutton" />
 
     <TextView
-        android:id="@+id/titleSortResults"
+        android:id="@+id/filterSortResultsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar" />
+        app:layout_constraintTop_toBottomOf="@+id/accountNavbar" />
 
     <RadioButton
         android:id="@+id/radioSort1"
@@ -100,8 +100,8 @@
         android:text="@string/price_high"
         android:textColor="#615855"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/titleSortResults"
-        app:layout_constraintTop_toBottomOf="@+id/titleSortResults"
+        app:layout_constraintStart_toStartOf="@+id/filterSortResultsText"
+        app:layout_constraintTop_toBottomOf="@+id/filterSortResultsText"
         android:focusable="true" />
 
     <RadioButton
@@ -148,7 +148,7 @@
         android:focusable="true" />
 
     <TextView
-        android:id="@+id/titlePriceRange"
+        android:id="@+id/filterPriceRangeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -163,7 +163,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioSort4" />
 
     <SeekBar
-        android:id="@+id/seekBar5"
+        android:id="@+id/filterPriceSeekBar"
         style="@android:style/Widget.Material.SeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePriceRange" />
+        app:layout_constraintTop_toBottomOf="@+id/filterPriceRangeText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
