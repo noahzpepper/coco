@@ -3,43 +3,45 @@ package com.coco.coco;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.coco.coco.model.Price;
-import com.coco.coco.model.Product;
-import com.squareup.picasso.Picasso;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.coco.coco.model.Price;
+import com.coco.coco.model.Product;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailedViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Product product;
 
-    private Button descriptionButton, reviewInfoButton, ingredientsButton;
-    private TextView descriptionTV, ingredientsTV, imagesTV;
+    private TextView descriptionTV, ingredientsTV, imagesTV, reviewsTV;
     private ImageView detailProductImage, detailSellerImage, detailSellerImage1, detailSellerImage2,
             detailSellerImage3, detailEcoCertified, detailSellerContainer1, detailSellerContainer2,
-            detailSellerContainer3;
-    private ImageView detailCommunityImage1, detailCommunityImage2, detailCommunityImage3,
-            detailCommunityImage4, detailCommunityImage5;
+            detailSellerContainer3, detailReviewReviewerPic, detailCommunityImage1, detailCommunityImage2,
+            detailCommunityImage3, detailCommunityImage4, detailCommunityImage5;
     private TextView detailProductName, detailRating, detailSkintoneMatch, detailPrice,
-            detailSellerText1, detailSellerText2, detailSellerText3;
+            detailSellerText1, detailSellerText2, detailSellerText3, detailReviewUserName, detailReviewUserContent;
+
     private HorizontalScrollView imageScrollView;
+    private TextView rating3, rating5, rating6, rating7;
+    private Button detailAddReviewButton;
+    private ImageView star, star3, star4, star5;
+    private ArrayList<View> reviewInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_view);
 
-        product = (Product) getIntent().getSerializableExtra("product");
-
+        //init views
         detailProductImage = findViewById(R.id.detailProductImage);
         detailSellerImage = findViewById(R.id.detailSellerImage);
         detailSellerImage1 = findViewById(R.id.detailSellerImage1);
@@ -61,21 +63,43 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         detailSellerText1 = findViewById(R.id.detailSellerText1);
         detailSellerText2 = findViewById(R.id.detailSellerText2);
         detailSellerText3 = findViewById(R.id.detailSellerText3);
-        descriptionButton = findViewById(R.id.description_button);
-        ingredientsButton = findViewById(R.id.ingredients_button);
-        reviewInfoButton = findViewById(R.id.review_button);
         ingredientsTV = findViewById(R.id.ingredients);
         descriptionTV = findViewById(R.id.description);
         imagesTV = findViewById(R.id.images_text);
         imageScrollView = findViewById(R.id.images_scroll);
+        detailAddReviewButton = findViewById(R.id.detailAddReviewButton);
+        detailReviewUserContent = findViewById(R.id.detailReviewUserContent);
+        detailReviewReviewerPic = findViewById(R.id.detailReviewReviewerPic);
+        detailReviewUserName = findViewById(R.id.detailReviewUserName);
+        rating3 = findViewById(R.id.rating3);
+        rating5 = findViewById(R.id.rating5);
+        rating6 = findViewById(R.id.rating6);
+        rating7 = findViewById(R.id.rating7);
+        reviewsTV = findViewById(R.id.reviews_text);
+        star = findViewById(R.id.star);
+        star3 = findViewById(R.id.star3);
+        star4 = findViewById(R.id.star4);
+        star5 = findViewById(R.id.star5);
+        reviewInfo = createReviewInfoList();
 
-        descriptionButton.setOnClickListener(this);
-        ingredientsButton.setOnClickListener(this);
-        reviewInfoButton.setOnClickListener(this);
+        //on click listeners
+        findViewById(R.id.review_button).setOnClickListener(this);
+        findViewById(R.id.ingredients_button).setOnClickListener(this);
+        findViewById(R.id.description_button).setOnClickListener(this);
         findViewById(R.id.detailAccountButton).setOnClickListener(this);
+        findViewById(R.id.detailAddReviewButton).setOnClickListener(this);
         findViewById(R.id.detailedViewBackButton).setOnClickListener(this);
 
+        //product
+        product = (Product) getIntent().getSerializableExtra("product");
         loadProduct();
+    }
+
+    private ArrayList<View> createReviewInfoList() {
+        return new ArrayList<>(Arrays.asList(
+                imagesTV, imageScrollView, detailReviewUserName, detailReviewReviewerPic, detailReviewUserContent,
+                rating3, rating5, rating6, rating7, detailAddReviewButton, reviewsTV, star, star3, star4, star5
+        ));
     }
 
     private void loadProduct() {
@@ -139,8 +163,9 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.review_button:
-                toggleVisibility(imagesTV);
-                toggleVisibility(imageScrollView);
+                for (View v : reviewInfo) {
+                    toggleVisibility(v);
+                }
                 break;
             case R.id.ingredients_button:
                 toggleVisibility(ingredientsTV);
@@ -150,6 +175,9 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.detailAccountButton:
                 startActivity(new Intent(DetailedViewActivity.this, UserAccountActivity.class));
+                break;
+            case R.id.detailAddReviewButton:
+                startActivity(new Intent(DetailedViewActivity.this, AddReviewActivity.class));
                 break;
             case R.id.detailedViewBackButton:
                 onBackPressed();

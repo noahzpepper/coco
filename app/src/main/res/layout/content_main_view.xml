@@ -86,6 +86,7 @@
             android:textColor="#656565"
             android:textSize="26sp" />
 
+
         <ImageView
             android:id="@+id/ic_magnify"
             android:layout_width="40dp"

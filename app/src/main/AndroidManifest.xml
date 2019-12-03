@@ -17,6 +17,7 @@
         <activity android:name=".UserFilterActivity" />
         <activity android:name=".UserAccountActivity" />
         <activity android:name=".DetailedViewActivity" />
+        <activity android:name=".AddReviewActivity" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>
