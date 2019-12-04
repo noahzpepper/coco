@@ -50,8 +50,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
         holder.cardName.setText(product.getName());
         holder.cardEcoCertifiedImage.setVisibility(product.isEcoCertified() ? View.VISIBLE : View.GONE);
-        holder.cardOverallRating.setText(String.valueOf(product.getOverallRating()));
-        holder.cardSkintoneRating.setText(String.valueOf(product.getSkinToneRating()));
+        holder.cardOverallRating.setText(product.calcOverallRating());
+        holder.cardSkintoneRating.setText(product.calcSkintoneRating());
         holder.cardPrice.setText(String.format(Locale.US, "$%.2f", product.priceLowest().getPrice()));
         product.priceLowest().loadLogoIntoImageView(holder.cardSellerImage);
         product.loadProductImageIntoImageView(holder.cardImage);

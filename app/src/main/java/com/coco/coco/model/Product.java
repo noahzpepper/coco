@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
 
 public class Product implements Serializable {
@@ -20,30 +21,24 @@ public class Product implements Serializable {
     private String company;
     private String description;
     private String productImage;
-    private ArrayList<String> communityImageUrls;
     private ArrayList<String> ingredients;
     private boolean ecoCertified;
     private String name;
-    private double overallRating;
-    private double skinToneRating;
-    private ArrayList<String> reviewIds;
+    private ArrayList<Review> reviews;
     private Map<String, Price> prices;
 
     public Product() {}
 
-    public Product(String id, String category, String company, String description, String productImage, ArrayList<String> communityImageUrls, ArrayList<String> ingredients, boolean ecoCertified, String name, double overallRating, double skinToneRating, ArrayList<String> reviewIds, Map<String, Price> prices) {
+    public Product(String id, String category, String company, String description, String productImage, ArrayList<String> ingredients, boolean ecoCertified, String name, ArrayList<Review> reviews, Map<String, Price> prices) {
         this.id = id;
         this.category = category;
         this.company = company;
         this.description = description;
         this.productImage = productImage;
-        this.communityImageUrls = communityImageUrls;
         this.ingredients = ingredients;
         this.ecoCertified = ecoCertified;
         this.name = name;
-        this.overallRating = overallRating;
-        this.skinToneRating = skinToneRating;
-        this.reviewIds = reviewIds;
+        this.reviews = reviews;
         this.prices = prices;
     }
 
@@ -87,14 +82,6 @@ public class Product implements Serializable {
         this.productImage = productImage;
     }
 
-    public ArrayList<String> getCommunityImageUrls() {
-        return communityImageUrls;
-    }
-
-    public void setCommunityImageUrls(ArrayList<String> communityImageUrls) {
-        this.communityImageUrls = communityImageUrls;
-    }
-
     public ArrayList<String> getIngredients() {
         return ingredients;
     }
@@ -119,28 +106,35 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public double getOverallRating() {
-        return overallRating;
+    public String calcOverallRating() {
+        if (reviews == null || reviews.size() == 0) { return "---"; }
+        double sum = 0.0;
+        for (Review r : reviews) {
+            sum += r.getOverallRating();
+        }
+        double rating = sum / reviews.size();
+        return String.format(Locale.US, "%.2f", rating);
     }
 
-    public void setOverallRating(double overallRating) {
-        this.overallRating = overallRating;
+    public String calcSkintoneRating() {
+        if (reviews == null || reviews.size() == 0) { return "---"; }
+        double sum = 0;
+        for (Review r : reviews) {
+            sum += r.getSkinToneRating();
+        }
+        double rating = sum / reviews.size();
+        return String.format(Locale.US, "%.2f", rating);
     }
 
-    public double getSkinToneRating() {
-        return skinToneRating;
+    public ArrayList<Review> getReviews() {
+        if (reviews == null) {
+            return new ArrayList<>();
+        }
+        return reviews;
     }
 
-    public void setSkinToneRating(double skinToneRating) {
-        this.skinToneRating = skinToneRating;
-    }
-
-    public ArrayList<String> getReviewIds() {
-        return reviewIds;
-    }
-
-    public void setReviewIds(ArrayList<String> reviewIds) {
-        this.reviewIds = reviewIds;
+    public void setReviews(ArrayList<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Map<String, Price> getPrices() {
@@ -149,6 +143,19 @@ public class Product implements Serializable {
 
     public void setPrices(Map<String, Price> prices) {
         this.prices = prices;
+    }
+
+    public ArrayList<String> gatherCommunityImageUrls() {
+        ArrayList<String> urls = new ArrayList<>();
+        if (reviews != null) {
+            for (Review r : reviews) {
+                ArrayList<String> rUrls = r.getImageUrls();
+                if (rUrls != null) {
+                    urls.addAll(rUrls);
+                }
+            }
+        }
+        return urls;
     }
 
     public void loadProductImageIntoImageView(final ImageView imageView) {
@@ -163,8 +170,24 @@ public class Product implements Serializable {
     }
 
     public void loadCommunityImagesIntoImageViews(final ImageView[] imageViews) {
+        ArrayList<String> communityImageUrls = gatherCommunityImageUrls();
         StorageReference ref = FirebaseStorage.getInstance().getReference();
+//        int i;
+//        for (i = 0; communityImageUrls != null && i < communityImageUrls.size(); i++) {
+//            if (i >= imageViews.length) { return; }
+//            final int j = i;
+//            ref.child(communityImageUrls.get(i)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                @Override
+//                public void onSuccess(Uri uri) {
+//                    Picasso.get().load(uri).into(imageViews[j]);
+//                }
+//            });
+//        }
+//        for (; i < imageViews.length; i++) {
+//            imageViews[i].setVisibility(View.GONE);
+//        }
         int i;
+        final Uri[] uriS = new Uri[1];
         for (i = 0; communityImageUrls != null && i < communityImageUrls.size(); i++) {
             if (i >= imageViews.length) { return; }
             final int j = i;
@@ -172,11 +195,12 @@ public class Product implements Serializable {
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.get().load(uri).into(imageViews[j]);
+                    uriS[0] = uri;
                 }
             });
         }
         for (; i < imageViews.length; i++) {
-            imageViews[i].setVisibility(View.GONE);
+            Picasso.get().load(uriS[0]).into(imageViews[i]);
         }
     }
 

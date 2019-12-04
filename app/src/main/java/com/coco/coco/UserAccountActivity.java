@@ -96,15 +96,10 @@ public class UserAccountActivity extends AppCompatActivity implements View.OnCli
         });
 
         TableLayout.LayoutParams lp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        lp.setMargins(0, dpToPx(12), 0, 0);
+        lp.setMargins(0, Utils.dpToPx(this, 12), 0, 0);
         tableRowItemContainer.setLayoutParams(lp);
 
         return tableRowItemContainer;
-    }
-
-    private int dpToPx(int dp) {
-        Resources r = this.getResources();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
     private void loadUser() {

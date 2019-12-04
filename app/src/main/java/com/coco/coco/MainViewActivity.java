@@ -1,18 +1,18 @@
 package com.coco.coco;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.coco.coco.model.Price;
-import com.coco.coco.model.Product;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainViewActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,8 +57,12 @@ public class MainViewActivity extends AppCompatActivity implements View.OnClickL
 
         Price.initializeLogos();
 
-        //TEMPORARY - remove this
-        new ProductDatabaseUtil().run();
+        //temporary for adding products to db
+        try {
+            new ProductFactory().run();
+        } catch (AssertionError e) {
+            Toast.makeText(this, "Product not added to database: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

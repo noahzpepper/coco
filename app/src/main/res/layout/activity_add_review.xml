@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/pink_bar" />
 
     <ImageButton
-        android:id="@+id/account_button"
+        android:id="@+id/addReviewAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/account_button" />
 
     <ImageButton
-        android:id="@+id/back_button"
+        android:id="@+id/addReviewBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -45,73 +45,69 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        app:layout_constraintStart_toStartOf="@+id/pink_bar"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewBackButton"
+        app:layout_constraintStart_toEndOf="@+id/addReviewBackButton"
+        app:layout_constraintTop_toTopOf="@+id/addReviewBackButton"
         app:srcCompat="@drawable/coco_sketch" />
 
     <TextView
-        android:id="@+id/product_name"
-        android:layout_width="wrap_content"
+        android:id="@+id/addReviewName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
+        android:maxLines="3"
         android:text="Product Name"
         android:textColor="#303030"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pink_bar" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/stars" />
 
     <TextView
         android:id="@+id/rating_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
         android:text="Rating:"
         android:textColor="#323232"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pink_bar" />
+        app:layout_constraintStart_toStartOf="@+id/addReviewName"
+        app:layout_constraintTop_toBottomOf="@+id/addReviewName" />
+
+    <TextView
+        android:id="@+id/rating_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Skin Tone:"
+        android:textColor="#323232"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/rating_text"
+        app:layout_constraintTop_toBottomOf="@+id/rating_text" />
 
     <RelativeLayout
         android:id="@+id/review_box"
         android:layout_width="350dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="210dp"
-        android:layout_marginEnd="15dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rectangle_gray"
         android:elevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="@id/addReviewName"
+        app:layout_constraintStart_toStartOf="@+id/addReviewName"
+        app:layout_constraintTop_toBottomOf="@+id/addReviewSkintoneStar3">
 
         <AutoCompleteTextView
-            android:id="@+id/input_review"
+            android:id="@+id/addReviewText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="2dp"
-            android:layout_marginBottom="24dp"
             android:layout_toRightOf="@+id/ic_magnify"
             android:background="@null"
             android:gravity="top|left"
@@ -119,44 +115,133 @@
             android:imeOptions="actionSearch"
             android:singleLine="true"
             android:textColor="#656565"
-            android:textSize="26sp" />
+            android:textSize="18sp" />
+
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addReviewUpload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="515dp"
+        android:layout_marginTop="16dp"
         android:background="?android:selectableItemBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/upload_text"
+        app:layout_constraintStart_toStartOf="@+id/addReviewSubmit"
+        app:layout_constraintTop_toBottomOf="@+id/review_box"
         app:srcCompat="@drawable/upload_image" />
 
     <ImageButton
-        android:id="@+id/submit_button"
+        android:id="@+id/addReviewSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="16dp"
         android:background="?android:selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addReviewUpload"
         app:srcCompat="@drawable/submit_button" />
 
     <TextView
         android:id="@+id/upload_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="530dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat"
         android:text="Upload Image"
         android:textColor="#1C1C1C"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewUpload"
+        app:layout_constraintEnd_toEndOf="@+id/addReviewSubmit"
+        app:layout_constraintStart_toEndOf="@+id/addReviewUpload"
+        app:layout_constraintTop_toTopOf="@+id/addReviewUpload" />
+
+    <ImageView
+        android:id="@+id/addReviewOverallStar1"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rating_text"
+        app:layout_constraintStart_toEndOf="@+id/rating_text"
+        app:layout_constraintTop_toTopOf="@+id/rating_text" />
+
+    <ImageView
+        android:id="@+id/addReviewOverallStar2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewOverallStar1"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewOverallStar3"
+        app:layout_constraintStart_toEndOf="@+id/addReviewOverallStar1"
+        app:layout_constraintTop_toTopOf="@+id/addReviewOverallStar1" />
+
+    <ImageView
+        android:id="@+id/addReviewOverallStar3"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewOverallStar2"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewOverallStar4"
+        app:layout_constraintStart_toEndOf="@+id/addReviewOverallStar2"
+        app:layout_constraintTop_toTopOf="@+id/addReviewOverallStar2" />
+
+    <ImageView
+        android:id="@+id/addReviewOverallStar4"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewOverallStar3"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewOverallStar5"
+        app:layout_constraintStart_toEndOf="@+id/addReviewOverallStar3"
+        app:layout_constraintTop_toTopOf="@+id/addReviewOverallStar3" />
+
+    <ImageView
+        android:id="@+id/addReviewOverallStar5"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewOverallStar4"
+        app:layout_constraintStart_toEndOf="@+id/addReviewOverallStar4"
+        app:layout_constraintTop_toTopOf="@+id/addReviewOverallStar4" />
+
+    <ImageView
+        android:id="@+id/addReviewSkintoneStar1"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rating_text2"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewSkintoneStar2"
+        app:layout_constraintStart_toStartOf="@+id/addReviewOverallStar1"
+        app:layout_constraintTop_toTopOf="@+id/rating_text2" />
+
+    <ImageView
+        android:id="@+id/addReviewSkintoneStar2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewSkintoneStar1"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewSkintoneStar3"
+        app:layout_constraintStart_toEndOf="@+id/addReviewSkintoneStar1"
+        app:layout_constraintTop_toTopOf="@+id/addReviewSkintoneStar1" />
+
+    <ImageView
+        android:id="@+id/addReviewSkintoneStar3"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewSkintoneStar2"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewSkintoneStar4"
+        app:layout_constraintStart_toEndOf="@+id/addReviewSkintoneStar2"
+        app:layout_constraintTop_toTopOf="@+id/addReviewSkintoneStar2" />
+
+    <ImageView
+        android:id="@+id/addReviewSkintoneStar4"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewSkintoneStar3"
+        app:layout_constraintEnd_toStartOf="@+id/addReviewSkintoneStar5"
+        app:layout_constraintStart_toEndOf="@+id/addReviewSkintoneStar3"
+        app:layout_constraintTop_toTopOf="@+id/addReviewSkintoneStar3" />
+
+    <ImageView
+        android:id="@+id/addReviewSkintoneStar5"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/addReviewSkintoneStar4"
+        app:layout_constraintStart_toEndOf="@+id/addReviewSkintoneStar4"
+        app:layout_constraintTop_toTopOf="@+id/addReviewSkintoneStar4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

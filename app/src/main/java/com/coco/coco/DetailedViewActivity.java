@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.coco.coco.model.Price;
@@ -17,24 +18,34 @@ import java.util.Arrays;
 import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailedViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Product product;
 
-    private TextView descriptionTV, ingredientsTV, imagesTV, reviewsTV;
-    private ImageView detailProductImage, detailSellerImage, detailSellerImage1, detailSellerImage2,
-            detailSellerImage3, detailEcoCertified, detailSellerContainer1, detailSellerContainer2,
-            detailSellerContainer3, detailReviewReviewerPic, detailCommunityImage1, detailCommunityImage2,
-            detailCommunityImage3, detailCommunityImage4, detailCommunityImage5;
+    private TextView descriptionTV, ingredientsTV, imagesTV, reviewText, reviewOverallRating, reviewSkintoneRating;
+    private ImageView detailProductImage;
+    private ImageView detailSellerImage;
+    private ImageView detailSellerImage1;
+    private ImageView detailSellerImage2;
+    private ImageView detailSellerImage3;
+    private ImageView detailEcoCertified;
+    private ImageView detailSellerContainer1;
+    private ImageView detailSellerContainer2;
+    private ImageView detailSellerContainer3;
+    private ImageView reviewOverallStar;
+    private ImageView reviewSkintoneStar;
     private TextView detailProductName, detailRating, detailSkintoneMatch, detailPrice,
-            detailSellerText1, detailSellerText2, detailSellerText3, detailReviewUserName, detailReviewUserContent;
-
+            detailSellerText1, detailSellerText2, detailSellerText3;
     private HorizontalScrollView imageScrollView;
-    private TextView rating3, rating5, rating6, rating7;
     private Button detailAddReviewButton;
-    private ImageView star, star3, star4, star5;
     private ArrayList<View> reviewInfo;
+    private LinearLayout shapeLayout;
+
+    private RecyclerView reviewRecycler;
+    private ReviewAdapter reviewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +58,6 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         detailSellerImage1 = findViewById(R.id.detailSellerImage1);
         detailSellerImage2 = findViewById(R.id.detailSellerImage2);
         detailSellerImage3 = findViewById(R.id.detailSellerImage3);
-        detailCommunityImage1 = findViewById(R.id.detailCommunityImage1);
-        detailCommunityImage2 = findViewById(R.id.detailCommunityImage2);
-        detailCommunityImage3 = findViewById(R.id.detailCommunityImage3);
-        detailCommunityImage4 = findViewById(R.id.detailCommunityImage4);
-        detailCommunityImage5 = findViewById(R.id.detailCommunityImage5);
         detailSellerContainer1 = findViewById(R.id.detailSellerContainer1);
         detailSellerContainer2 = findViewById(R.id.detailSellerContainer2);
         detailSellerContainer3 = findViewById(R.id.detailSellerContainer3);
@@ -67,20 +73,20 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         descriptionTV = findViewById(R.id.description);
         imagesTV = findViewById(R.id.images_text);
         imageScrollView = findViewById(R.id.images_scroll);
+        shapeLayout = findViewById(R.id.shapeLayout);
         detailAddReviewButton = findViewById(R.id.detailAddReviewButton);
-        detailReviewUserContent = findViewById(R.id.detailReviewUserContent);
-        detailReviewReviewerPic = findViewById(R.id.detailReviewReviewerPic);
-        detailReviewUserName = findViewById(R.id.detailReviewUserName);
-        rating3 = findViewById(R.id.rating3);
-        rating5 = findViewById(R.id.rating5);
-        rating6 = findViewById(R.id.rating6);
-        rating7 = findViewById(R.id.rating7);
-        reviewsTV = findViewById(R.id.reviews_text);
-        star = findViewById(R.id.star);
-        star3 = findViewById(R.id.star3);
-        star4 = findViewById(R.id.star4);
-        star5 = findViewById(R.id.star5);
+        reviewText = findViewById(R.id.detailReviewText);
+        reviewSkintoneRating = findViewById(R.id.reviewSkintoneRating);
+        reviewOverallRating = findViewById(R.id.reviewOverallRating);
+        reviewOverallStar = findViewById(R.id.reviewOverallStar);
+        reviewSkintoneStar = findViewById(R.id.reviewSkintoneStar);
+        reviewRecycler = findViewById(R.id.reviewRecycler);
         reviewInfo = createReviewInfoList();
+
+        //setup review recyclerview
+        reviewRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        reviewAdapter = new ReviewAdapter();
+        reviewRecycler.setAdapter(reviewAdapter);
 
         //on click listeners
         findViewById(R.id.review_button).setOnClickListener(this);
@@ -93,12 +99,13 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         //product
         product = (Product) getIntent().getSerializableExtra("product");
         loadProduct();
+        loadReviews();
     }
 
     private ArrayList<View> createReviewInfoList() {
         return new ArrayList<>(Arrays.asList(
-                imagesTV, imageScrollView, detailReviewUserName, detailReviewReviewerPic, detailReviewUserContent,
-                rating3, rating5, rating6, rating7, detailAddReviewButton, reviewsTV, star, star3, star4, star5
+                imagesTV, imageScrollView, reviewOverallRating, detailAddReviewButton, reviewText,
+                reviewSkintoneRating, reviewOverallStar, reviewSkintoneStar, reviewRecycler
         ));
     }
 
@@ -109,8 +116,8 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         product.priceLowest().loadLogoIntoImageView(detailSellerImage);
         detailProductName.setText(product.getName());
         detailPrice.setText(String.format(Locale.US, "$%.2f", product.priceLowest().getPrice()));
-        detailRating.setText(String.format(Locale.US, "%.2f     overall", product.getOverallRating()));
-        detailSkintoneMatch.setText(String.format(Locale.US, "%.2f     skin tone match", product.getSkinToneRating()));
+        detailRating.setText(String.format(Locale.US, "%s     overall", product.calcOverallRating()));
+        detailSkintoneMatch.setText(String.format(Locale.US, "%s     skin tone match", product.calcSkintoneRating()));
         descriptionTV.setText(product.getDescription());
 
         //ingredients list
@@ -146,10 +153,25 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         }
 
         //community images
-        ImageView[] detailCommunityImages = new ImageView[]{detailCommunityImage1, detailCommunityImage2,
-                detailCommunityImage3, detailCommunityImage4, detailCommunityImage5};
+        int numImages = product.gatherCommunityImageUrls().size();
+        ImageView[] detailCommunityImages = new ImageView[numImages];
+        for (int j = 0; j < detailCommunityImages.length; j++) {
+            detailCommunityImages[j] = new ImageView(this);
+            int size = Utils.dpToPx(this, 100);
+            detailCommunityImages[j].setLayoutParams(new LinearLayout.LayoutParams(size, size));
+            shapeLayout.addView(detailCommunityImages[j]);
+        }
         product.loadCommunityImagesIntoImageViews(detailCommunityImages);
     }
+
+    private void loadReviews() {
+        int numReviews = (product.getReviews() == null) ? 0 : product.getReviews().size();
+        reviewText.setText(String.format(Locale.US, "Reviews (%d)", numReviews));
+        reviewOverallRating.setText(String.format(Locale.US, "%s     overall", product.calcOverallRating()));
+        reviewSkintoneRating.setText(String.format(Locale.US, "%s     skin tone match", product.calcSkintoneRating()));
+        reviewAdapter.setData(product.getReviews());
+    }
+
 
     private void toggleVisibility(View view) {
         if (view.getVisibility() == View.VISIBLE) {
@@ -177,7 +199,9 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
                 startActivity(new Intent(DetailedViewActivity.this, UserAccountActivity.class));
                 break;
             case R.id.detailAddReviewButton:
-                startActivity(new Intent(DetailedViewActivity.this, AddReviewActivity.class));
+                Intent intent = new Intent(DetailedViewActivity.this, AddReviewActivity.class);
+                intent.putExtra("product", product);
+                startActivity(intent);
                 break;
             case R.id.detailedViewBackButton:
                 onBackPressed();
