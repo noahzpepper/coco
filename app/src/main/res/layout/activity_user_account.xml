@@ -46,7 +46,7 @@
     <ScrollView
         android:id="@+id/userScrollView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:scrollbarSize="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +56,88 @@
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/constraintLayoutAccountMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="30dp"
             tools:layout_editor_absoluteY="1dp">
+
+            <ImageButton
+                android:id="@+id/editNameButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/accountInputName"
+                app:layout_constraintStart_toEndOf="@+id/accountInputName"
+                app:layout_constraintTop_toTopOf="@+id/accountInputName"
+                app:srcCompat="@drawable/edit_icon" />
+
+            <ImageButton
+                android:id="@+id/editPictureButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/accountInputPicture"
+                app:layout_constraintStart_toEndOf="@+id/accountInputPicture"
+                app:layout_constraintTop_toTopOf="@+id/accountInputPicture"
+                app:srcCompat="@drawable/edit_icon" />
+
+            <ImageButton
+                android:id="@+id/addIngredientButton"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#EBFFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/titleIngredients"
+                app:layout_constraintStart_toEndOf="@+id/titleIngredients"
+                app:layout_constraintTop_toTopOf="@+id/titleIngredients"
+                app:srcCompat="@drawable/addbutton" />
+
+            <ImageButton
+                android:id="@+id/addCompanyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="10dp"
+                android:background="#EDFFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/tableCompanies"
+                app:layout_constraintStart_toEndOf="@+id/titleCompanies"
+                app:layout_constraintTop_toTopOf="@+id/titleCompanies"
+                app:srcCompat="@drawable/addbutton" />
+
+            <ImageView
+                android:id="@+id/accountInputPicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/titlePicture"
+                app:layout_constraintTop_toBottomOf="@+id/titlePicture"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TableLayout
+                android:id="@+id/tableIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="70dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleIngredients" />
+
+            <TableLayout
+                android:id="@+id/tableCompanies"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleCompanies" />
 
             <TextView
                 android:id="@+id/titleName"
@@ -74,26 +151,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/editNameButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="20dp"
-                android:background="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/inputName"
-                app:layout_constraintStart_toEndOf="@+id/titleName"
-                app:layout_constraintTop_toTopOf="@+id/titleName"
-                app:srcCompat="@drawable/edit_icon" />
-
             <TextView
-                android:id="@+id/inputName"
+                android:id="@+id/accountInputName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="nameInput"
                 app:layout_constraintStart_toStartOf="@+id/titleName"
                 app:layout_constraintTop_toBottomOf="@+id/titleName" />
 
@@ -101,275 +165,23 @@
                 android:id="@+id/titlePicture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/Picture"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/titleName"
-                app:layout_constraintTop_toBottomOf="@+id/inputName" />
-
-            <ImageButton
-                android:id="@+id/editPictureButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="20dp"
-                android:background="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/accountInputPicture"
-                app:layout_constraintStart_toEndOf="@+id/titlePicture"
-                app:layout_constraintTop_toTopOf="@+id/titlePicture"
-                app:srcCompat="@drawable/edit_icon" />
-
-            <ImageView
-                android:id="@+id/accountInputPicture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintStart_toStartOf="@+id/titlePicture"
-                app:layout_constraintTop_toBottomOf="@+id/titlePicture"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:layout_constraintTop_toBottomOf="@+id/accountInputName" />
 
             <TextView
                 android:id="@+id/titleIngredients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/Ingredient"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/titlePicture"
                 app:layout_constraintTop_toBottomOf="@+id/accountInputPicture" />
-
-            <ImageButton
-                android:id="@+id/addIngredientButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="15dp"
-                android:background="#EBFFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/tableIngredients"
-                app:layout_constraintStart_toEndOf="@+id/titleIngredients"
-                app:layout_constraintTop_toTopOf="@+id/titleIngredients"
-                app:srcCompat="@drawable/addbutton" />
-
-            <TableLayout
-                android:id="@+id/tableIngredients"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="70dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleIngredients">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="blocked ingredient" />
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-            </TableLayout>
 
             <TextView
                 android:id="@+id/titleCompanies"
@@ -382,241 +194,16 @@
                 app:layout_constraintStart_toStartOf="@+id/titleIngredients"
                 app:layout_constraintTop_toBottomOf="@+id/tableIngredients" />
 
-            <ImageButton
-                android:id="@+id/addCompanyButton"
+            <Button
+                android:id="@+id/accountLogOutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="15dp"
-                android:background="#EDFFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/tableCompanies"
-                app:layout_constraintStart_toEndOf="@+id/titleCompanies"
-                app:layout_constraintTop_toTopOf="@+id/titleCompanies"
-                app:srcCompat="@drawable/addbutton" />
-
-            <TableLayout
-                android:id="@+id/tableCompanies"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginTop="24dp"
+                android:text="Log Out"
+                android:background="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleCompanies">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/comprow1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company1" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/comp_row2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company2" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company3" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company4" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#EBFFFFFF"
-                        android:contentDescription="remove_company"
-                        app:srcCompat="@drawable/removebutton" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/comprow1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company1" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/comp_row2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company2" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company3" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company4" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#EBFFFFFF"
-                        android:contentDescription="remove_company"
-                        app:srcCompat="@drawable/removebutton" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/comprow1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company1" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company3" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#EBFFFFFF"
-                        app:srcCompat="@drawable/removebutton" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="company4" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#EBFFFFFF"
-                        android:contentDescription="remove_company"
-                        app:srcCompat="@drawable/removebutton" />
-
-                </TableRow>
-
-            </TableLayout>
+                app:layout_constraintTop_toBottomOf="@id/tableCompanies" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -82,7 +82,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void transitionToMain() {
-        Intent i = new Intent (SplashActivity.this, MainViewActivity.class);
+        Intent i = new Intent(SplashActivity.this, MainViewActivity.class);
         startActivity(i);
         finish();
     }
@@ -134,7 +134,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         if (uid == null) { return; }
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
         DatabaseReference userRef = root.child("users").child(uid);
-        User user = new User(name, null, new ArrayList<String>(), new ArrayList<String>());
+        User user = new User(uid, name, null, new ArrayList<String>(), new ArrayList<String>());
         userRef.setValue(user);
     }
 

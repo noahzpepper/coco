@@ -58,9 +58,7 @@ public class MainViewActivity extends AppCompatActivity implements View.OnClickL
         Price.initializeLogos();
 
         //TEMPORARY - remove this
-        for (int i = 0; i < 3; i++) {
-            new ProductDatabaseUtil().run();
-        }
+        new ProductDatabaseUtil().run();
     }
 
     @Override
