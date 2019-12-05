@@ -8,7 +8,7 @@
     tools:context=".UserFilterActivity">
 
     <ImageView
-        android:id="@+id/navbar"
+        android:id="@+id/accountNavbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/rectangle" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/filterImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,29 +28,29 @@
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/navbar"
+        app:layout_constraintTop_toTopOf="@+id/accountNavbar"
         app:srcCompat="@drawable/backarrowbutton" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/detailSellerText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:text="@string/Settings"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@+id/navbar"
+        app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/userFilterBackButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/eco_certified"
+        android:id="@+id/filterEcoCertified"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="24dp"
         android:buttonTint="#615855"
         android:clickable="true"
         android:focusable="true"
@@ -60,10 +60,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar5" />
+        app:layout_constraintTop_toBottomOf="@id/filterMaxPriceSeekBar" />
 
     <ImageButton
-        android:id="@+id/saveButton"
+        android:id="@+id/filterSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -71,11 +71,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eco_certified"
+        app:layout_constraintTop_toBottomOf="@id/filterEcoCertified"
         app:srcCompat="@drawable/savebutton" />
 
     <TextView
-        android:id="@+id/titleSortResults"
+        android:id="@+id/filterSortResultsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -87,70 +87,80 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar" />
+        app:layout_constraintTop_toBottomOf="@+id/accountNavbar" />
 
-    <RadioButton
-        android:id="@+id/radioSort1"
+    <RadioGroup
+        android:id="@+id/filterSortGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/price_high"
-        android:textColor="#615855"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/titleSortResults"
-        app:layout_constraintTop_toBottomOf="@+id/titleSortResults"
-        android:focusable="true" />
+        android:checkedButton="@id/filterSortRelevance"
+        app:layout_constraintStart_toStartOf="@+id/filterSortResultsText"
+        app:layout_constraintTop_toBottomOf="@+id/filterSortResultsText">
 
-    <RadioButton
-        android:id="@+id/radioSort2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:clickable="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/price_low"
-        android:textColor="#615855"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/radioSort1"
-        app:layout_constraintTop_toBottomOf="@+id/radioSort1"
-        android:focusable="true" />
+        <RadioButton
+            android:id="@+id/filterSortRelevance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat"
+            android:text="Relevance"
+            android:textColor="#615855"
+            android:textSize="13sp" />
 
-    <RadioButton
-        android:id="@+id/radioSort4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:checked="false"
-        android:clickable="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/skin_rating"
-        android:textColor="#615855"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/radioSort5"
-        app:layout_constraintTop_toBottomOf="@+id/radioSort5"
-        android:focusable="true" />
+        <RadioButton
+            android:id="@+id/filterSortPriceLowToHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/price_low"
+            android:textColor="#615855"
+            android:textSize="13sp" />
 
-    <RadioButton
-        android:id="@+id/radioSort5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:clickable="true"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/overall_rating"
-        android:textColor="#615855"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/radioSort2"
-        app:layout_constraintTop_toBottomOf="@+id/radioSort2"
-        android:focusable="true" />
+        <RadioButton
+            android:id="@+id/filterSortPriceHighToLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/price_high"
+            android:textColor="#615855"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/filterSortOverallRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/overall_rating"
+            android:textColor="#615855"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/filterSortSkintoneRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/skin_rating"
+            android:textColor="#615855"
+            android:textSize="13sp" />
+    </RadioGroup>
 
     <TextView
-        android:id="@+id/titlePriceRange"
+        android:id="@+id/filterPriceRangeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/Price"
@@ -160,32 +170,68 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioSort4" />
+        app:layout_constraintTop_toBottomOf="@id/filterSortGroup" />
 
     <SeekBar
-        android:id="@+id/seekBar5"
+        android:id="@+id/filterMinPriceSeekBar"
         style="@android:style/Widget.Material.SeekBar"
-        android:layout_width="0dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="64dp"
         android:clickable="true"
         android:focusable="true"
-        android:indeterminate="true"
+        android:indeterminate="false"
         android:isScrollContainer="true"
         android:longClickable="false"
-        android:max="100"
-        android:progress="@android:integer/config_shortAnimTime"
+        android:max="10000"
+        android:progress="5000"
         android:progressTint="#E91E63"
         android:scrollbars="vertical"
         android:secondaryProgress="@android:integer/config_shortAnimTime"
         android:splitTrack="false"
         android:verticalScrollbarPosition="right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/filterMinPriceText"
+        app:layout_constraintStart_toStartOf="@+id/filterPriceRangeText"
+        app:layout_constraintTop_toTopOf="@+id/filterMinPriceText" />
+
+    <SeekBar
+        android:id="@+id/filterMaxPriceSeekBar"
+        style="@android:style/Widget.Material.SeekBar"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:indeterminate="false"
+        android:isScrollContainer="true"
+        android:longClickable="false"
+        android:max="10000"
+        android:progress="5000"
+        android:progressTint="#E91E63"
+        android:scrollbars="vertical"
+        android:secondaryProgress="@android:integer/config_shortAnimTime"
+        android:splitTrack="false"
+        android:verticalScrollbarPosition="right"
+        app:layout_constraintBottom_toBottomOf="@id/filterMaxPriceText"
+        app:layout_constraintStart_toStartOf="@+id/filterPriceRangeText"
+        app:layout_constraintTop_toTopOf="@id/filterMaxPriceText" />
+
+    <TextView
+        android:id="@+id/filterMaxPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/filterMinPriceText"
+        app:layout_constraintTop_toBottomOf="@+id/filterMinPriceText" />
+
+    <TextView
+        android:id="@+id/filterMinPriceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePriceRange" />
+        app:layout_constraintTop_toBottomOf="@+id/filterPriceRangeText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

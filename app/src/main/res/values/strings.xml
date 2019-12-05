@@ -6,14 +6,14 @@
     <string name="Ingredient"> Blocked Ingredients </string>
     <string name="Company"> Blocked Companies </string>
 
-    <string name="Settings"> Search Filters </string>
-    <string name="Sort"> Sort Results by: </string>
-    <string name="price_high"> Prices high to low. </string>
-    <string name="price_low"> Prices low to high. </string>
-    <string name="overall_rating"> Overall rating. </string>
-    <string name="skin_rating"> Skin match rating. </string>
-    <string name="Price"> Price Range: </string>
-    <string name="eco_certified"> Only include eco certified products. </string>
+    <string name="Settings">Search Filters</string>
+    <string name="Sort">Sort Results by:</string>
+    <string name="price_high">Prices high to low</string>
+    <string name="price_low">Prices low to high</string>
+    <string name="overall_rating">Overall rating</string>
+    <string name="skin_rating">Skin tone match rating</string>
+    <string name="Price">Price Range:</string>
+    <string name="eco_certified">Only include eco certified products</string>
     <string name="title_activity_detailed_view">DetailedView</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

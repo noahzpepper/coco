@@ -13,37 +13,51 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/detailProductName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="75dp"
             android:fontFamily="@font/montserrat"
+            android:maxLines="3"
             android:text="Product Name - Cosmetic Product"
             android:textColor="#303030"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/detailProductCompanyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#303030"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/detailProductName"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductName" />
+
         <ImageView
-            android:id="@+id/product_image"
+            android:id="@+id/detailProductImage"
             android:layout_width="150dp"
             android:layout_height="155dp"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="115dp"
+            android:layout_marginStart="2dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/placeholder_image" />
+            app:layout_constraintStart_toStartOf="@+id/frame"
+            app:layout_constraintTop_toTopOf="@+id/frame"
+            app:srcCompat="@drawable/no_image" />
 
         <ImageView
             android:id="@+id/frame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="115dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductCompanyText"
             app:srcCompat="@drawable/frame" />
 
         <ImageView
@@ -51,9 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginTop="32dp"
             app:layout_constraintStart_toEndOf="@+id/frame"
-            app:layout_constraintTop_toBottomOf="@+id/product_name"
+            app:layout_constraintTop_toTopOf="@+id/frame"
             app:srcCompat="@drawable/star" />
 
         <ImageView
@@ -67,19 +80,18 @@
             app:srcCompat="@drawable/star" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/detailRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat"
             android:text="0.0     overall"
             android:textColor="#525252"
             app:layout_constraintStart_toEndOf="@+id/star1"
-            app:layout_constraintTop_toBottomOf="@+id/product_name" />
+            app:layout_constraintTop_toTopOf="@+id/star1" />
 
         <TextView
-            android:id="@+id/rating2"
+            android:id="@+id/detailSkintoneMatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -88,10 +100,10 @@
             android:text="0.0     skin tone match"
             android:textColor="#525252"
             app:layout_constraintStart_toEndOf="@+id/star2"
-            app:layout_constraintTop_toBottomOf="@+id/rating" />
+            app:layout_constraintTop_toBottomOf="@+id/detailRating" />
 
         <TextView
-            android:id="@+id/best_price"
+            android:id="@+id/detailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
@@ -103,143 +115,138 @@
             app:layout_constraintTop_toBottomOf="@+id/star2" />
 
         <ImageView
-            android:id="@+id/company_logo"
+            android:id="@+id/detailSellerImage"
             android:layout_width="33dp"
-            android:layout_height="28dp"
+            android:layout_height="33dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toEndOf="@+id/best_price"
-            app:layout_constraintTop_toBottomOf="@+id/rating2"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toEndOf="@+id/detailPrice"
+            app:layout_constraintTop_toBottomOf="@+id/detailSkintoneMatch" />
 
         <ImageView
-            android:id="@+id/buy_option1"
+            android:id="@+id/detailSellerContainer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frame"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/company_logo2"
+            android:id="@+id/detailSellerImage1"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option1"
-            app:layout_constraintTop_toTopOf="@+id/buy_option1"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer1"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer1" />
 
         <ImageView
-            android:id="@+id/buy_option2"
+            android:id="@+id/detailSellerContainer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="25dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/description_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option3"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer2"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/buy_option3"
+            android:id="@+id/detailSellerContainer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option1"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer1"
             app:srcCompat="@drawable/buy_option" />
 
         <ImageView
-            android:id="@+id/company_logo3"
+            android:id="@+id/detailSellerImage2"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option3"
-            app:layout_constraintTop_toTopOf="@+id/buy_option3"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer2"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer2" />
 
         <ImageView
-            android:id="@+id/company_logo4"
+            android:id="@+id/detailSellerImage3"
             android:layout_width="33dp"
             android:layout_height="28dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="@+id/buy_option2"
-            app:layout_constraintTop_toTopOf="@+id/buy_option2"
-            app:srcCompat="@drawable/company_logo" />
+            app:layout_constraintStart_toStartOf="@+id/detailSellerContainer3"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer3" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/detailSellerText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
             android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option1"
-            app:layout_constraintStart_toEndOf="@+id/company_logo2"
-            app:layout_constraintTop_toTopOf="@+id/buy_option1"
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer1"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage1"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer1"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/detailSellerText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
-            android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option3"
-            app:layout_constraintStart_toEndOf="@+id/company_logo3"
-            app:layout_constraintTop_toTopOf="@+id/buy_option3" />
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer2"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage2"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer2" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/detailSellerText3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/montserrat"
-            android:text="$0.00 + Free Shipping"
             android:textColor="#656565"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/buy_option2"
-            app:layout_constraintStart_toEndOf="@+id/company_logo4"
-            app:layout_constraintTop_toTopOf="@+id/buy_option2" />
+            app:layout_constraintBottom_toBottomOf="@+id/detailSellerContainer3"
+            app:layout_constraintStart_toEndOf="@+id/detailSellerImage3"
+            app:layout_constraintTop_toTopOf="@+id/detailSellerContainer3" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/detailEcoCertified"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/buy_option1"
+            app:layout_constraintBottom_toTopOf="@+id/detailSellerContainer1"
             app:layout_constraintStart_toEndOf="@+id/frame"
-            app:layout_constraintTop_toBottomOf="@+id/company_logo"
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerImage"
             app:srcCompat="@drawable/eco_certified" />
 
         <Button
@@ -255,7 +262,7 @@
             android:textColor="#303030"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buy_option2" />
+            app:layout_constraintTop_toBottomOf="@+id/detailSellerContainer3" />
 
         <Button
             android:id="@+id/ingredients_button"
@@ -320,105 +327,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredients_button" />
 
-        <ImageView
-            android:id="@+id/star4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
-            android:layout_marginTop="50dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/user1"
-            app:layout_constraintTop_toBottomOf="@+id/rating5"
-            app:srcCompat="@drawable/star" />
-
-        <ImageView
-            android:id="@+id/star3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="13dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/star"
-            app:srcCompat="@drawable/star" />
-
-        <ImageView
-            android:id="@+id/star5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/reviewer_pic"
-            app:layout_constraintTop_toBottomOf="@+id/star4"
-            app:srcCompat="@drawable/star" />
-
-        <ImageView
-            android:id="@+id/star"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="74dp"
-            android:layout_marginTop="25dp"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reviews_text"
-            app:srcCompat="@drawable/star" />
-
-        <HorizontalScrollView
-            android:id="@+id/images_scroll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/images_text">
-
-            <LinearLayout
-                android:id="@+id/shapeLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:visibility="visible">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/user_image1"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image2"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image1"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image2"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/user_image1"
-                    android:visibility="visible" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
         <TextView
             android:id="@+id/images_text"
             android:layout_width="wrap_content"
@@ -432,123 +340,110 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/review_button" />
 
-        <TextView
-            android:id="@+id/reviews_text"
+        <HorizontalScrollView
+            android:id="@+id/images_scroll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="40dp"
-            android:text="Reviews (num total)"
-            android:textColor="#303030"
-            android:textSize="18sp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/images_scroll" />
+            app:layout_constraintTop_toBottomOf="@+id/images_text">
+
+            <LinearLayout
+                android:id="@+id/shapeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="visible"/>
+        </HorizontalScrollView>
 
         <Button
-            android:id="@+id/add_review_button"
+            android:id="@+id/detailAddReviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="50dp"
             android:backgroundTint="#FE9A9C"
             android:text="Add Review"
             android:textColor="#FFFFFF"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/detailReviewText"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detailReviewText" />
+
+        <TextView
+            android:id="@+id/detailReviewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Reviews"
+            android:textColor="#303030"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/images_text"
             app:layout_constraintTop_toBottomOf="@+id/images_scroll" />
 
-        <TextView
-            android:id="@+id/rating6"
+        <ImageView
+            android:id="@+id/reviewOverallStar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/montserrat"
-            android:text="0.0     skin tone match"
-            android:textColor="#525252"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/star4"
-            app:layout_constraintTop_toBottomOf="@+id/rating5" />
+            app:layout_constraintStart_toStartOf="@+id/detailReviewText"
+            app:layout_constraintTop_toBottomOf="@id/detailReviewText"
+            app:srcCompat="@drawable/star" />
 
         <TextView
-            android:id="@+id/rating5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="13dp"
-            android:fontFamily="@font/montserrat"
-            android:text="0.0     skin tone match"
-            android:textColor="#525252"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/star3"
-            app:layout_constraintTop_toBottomOf="@+id/rating3" />
-
-        <TextView
-            android:id="@+id/rating3"
+            android:id="@+id/reviewOverallRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="25dp"
             android:fontFamily="@font/montserrat"
             android:text="0.0     overall"
             android:textColor="#525252"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/star"
-            app:layout_constraintTop_toBottomOf="@+id/reviews_text" />
+            app:layout_constraintBottom_toBottomOf="@+id/reviewOverallStar"
+            app:layout_constraintStart_toEndOf="@id/reviewOverallStar"
+            app:layout_constraintTop_toTopOf="@+id/reviewOverallStar" />
 
-        <TextView
-            android:id="@+id/rating7"
+        <ImageView
+            android:id="@+id/reviewSkintoneStar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/reviewOverallStar"
+            app:layout_constraintTop_toBottomOf="@id/reviewOverallStar"
+            app:srcCompat="@drawable/star" />
+
+        <TextView
+            android:id="@+id/reviewSkintoneRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:text="0.0     skin tone match"
             android:textColor="#525252"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/star5"
-            app:layout_constraintTop_toBottomOf="@+id/rating6" />
+            app:layout_constraintBottom_toBottomOf="@+id/reviewSkintoneStar"
+            app:layout_constraintStart_toStartOf="@+id/reviewOverallRating"
+            app:layout_constraintTop_toTopOf="@+id/reviewSkintoneStar" />
 
-        <ImageView
-            android:id="@+id/reviewer_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="37dp"
-            android:layout_marginTop="128dp"
-            android:src="@drawable/account_button"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reviews_text" />
-
-        <TextView
-            android:id="@+id/user1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="56dp"
-            android:fontFamily="@font/montserrat"
-            android:text="UserName"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@+id/reviewer_pic"
-            app:layout_constraintTop_toBottomOf="@+id/star3" />
-
-        <TextView
-            android:id="@+id/review_content"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="20dp"
-            android:scaleType="fitXY"
-            android:text="@string/sample_review"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviewRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/star5" />
+            app:layout_constraintTop_toBottomOf="@id/reviewSkintoneRating" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.core.widget.NestedScrollView>

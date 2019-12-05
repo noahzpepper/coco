@@ -1,7 +1,5 @@
 package com.coco.coco;
 
-import android.util.Log;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -11,46 +9,45 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
     private static final String TAG = "TABS";
 
-    int mNumOfTabs;
+    private int numTabs;
+    private RecyclerFragment[] tabs;
+    private ProductFilter filter;
 
-    public TabsAdapter(FragmentManager fm, int NoofTabs){
+    public TabsAdapter(FragmentManager fm, int numTabs){
         super(fm);
-        this.mNumOfTabs = NoofTabs;
+        this.numTabs = numTabs;
+        this.tabs = new RecyclerFragment[numTabs];
     }
 
     @Override
     public Fragment getItem(int i) {
-        switch (i) {
-            case 0:
-                Log.d(TAG, "case 0");
-                RecyclerFragment all = new RecyclerFragment();
-                return all;
-            case 1:
-                Log.d(TAG, "case 1");
-                RecyclerFragment face = new RecyclerFragment();
-                return face;
-            case 2:
-                Log.d(TAG, "case 2");
-                RecyclerFragment eyes = new RecyclerFragment();
-                return eyes;
-            case 3:
-                Log.d(TAG, "case 3");
-                RecyclerFragment lips = new RecyclerFragment();
-                return lips;
-            case 4:
-                Log.d(TAG, "case 4");
-                RecyclerFragment brows = new RecyclerFragment();
-                return brows;
-            case 5:
-                Log.d(TAG, "case 5");
-                RecyclerFragment skincare = new RecyclerFragment();
-                return skincare;
-            default:
-                return null;
+        Fragment f = RecyclerFragment.newInstance(MainViewActivity.CATEGORIES[i]);
+        tabs[i] = (RecyclerFragment) f;
+        if (filter != null) {
+            tabs[i].setFilter(filter);
         }
+        return f;
     }
+
     @Override
     public int getCount() {
-        return mNumOfTabs;
+        return numTabs;
+    }
+
+    public void setFilter(ProductFilter filter) {
+        this.filter = filter;
+        for (RecyclerFragment tab : tabs) {
+            if (tab != null) {
+                tab.setFilter(filter);
+            }
+        }
+    }
+
+    public void refreshTabs() {
+        for (RecyclerFragment tab : tabs) {
+            if (tab != null) {
+                tab.getDataFromDatabase();
+            }
+        }
     }
 }
