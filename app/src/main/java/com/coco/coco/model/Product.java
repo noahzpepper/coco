@@ -11,10 +11,19 @@ import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Locale;
 import java.util.Map;
 
 public class Product implements Serializable {
+
+    public enum Sort {
+        RELEVANCE,
+        PRICE_LOW_TO_HIGH,
+        PRICE_HIGH_TO_LOW,
+        OVERALL_RATING,
+        SKINTONE_RATING
+    }
 
     private String id;
     private String category; //none, face, eyes, lips, brows, skincare
@@ -172,20 +181,6 @@ public class Product implements Serializable {
     public void loadCommunityImagesIntoImageViews(final ImageView[] imageViews) {
         ArrayList<String> communityImageUrls = gatherCommunityImageUrls();
         StorageReference ref = FirebaseStorage.getInstance().getReference();
-//        int i;
-//        for (i = 0; communityImageUrls != null && i < communityImageUrls.size(); i++) {
-//            if (i >= imageViews.length) { return; }
-//            final int j = i;
-//            ref.child(communityImageUrls.get(i)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                @Override
-//                public void onSuccess(Uri uri) {
-//                    Picasso.get().load(uri).into(imageViews[j]);
-//                }
-//            });
-//        }
-//        for (; i < imageViews.length; i++) {
-//            imageViews[i].setVisibility(View.GONE);
-//        }
         int i;
         final Uri[] uriS = new Uri[1];
         for (i = 0; communityImageUrls != null && i < communityImageUrls.size(); i++) {
@@ -213,6 +208,75 @@ public class Product implements Serializable {
             }
         }
         return lowestPrice;
+    }
+
+    public boolean reviewedByUser(String uid) {
+        for (Review review : getReviews()) {
+            if (review.getUserId().equals(uid)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Comparators
+
+    private static final Comparator<Product> SORT_RELEVANCE = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            return 0;
+        }
+    };
+
+    private static final Comparator<Product> SORT_PRICE_LOW_TO_HIGH = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            return (int) (100 * (product.priceLowest().getPrice() - t1.priceLowest().getPrice()));
+        }
+    };
+
+
+    private static final Comparator<Product> SORT_PRICE_HIGH_TO_LOW = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            return (int) (100 * (t1.priceLowest().getPrice() - product.priceLowest().getPrice()));
+        }
+    };
+
+
+    private static final Comparator<Product> SORT_OVERALL_RATING = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            double rating = product.calcOverallRating().equals("---") ? -1.0 : Double.valueOf(product.calcOverallRating());
+            double t1rating = t1.calcOverallRating().equals("---") ? -1.0 : Double.valueOf(t1.calcOverallRating());
+            return (int) (100 * (t1rating - rating));
+        }
+    };
+
+
+    private static final Comparator<Product> SORT_SKINTONE_RATING = new Comparator<Product>() {
+        @Override
+        public int compare(Product product, Product t1) {
+            double rating = product.calcSkintoneRating().equals("---") ? -1.0 : Double.valueOf(product.calcSkintoneRating());
+            double t1rating = t1.calcSkintoneRating().equals("---") ? -1.0 : Double.valueOf(t1.calcSkintoneRating());
+            return (int) (100 * (t1rating - rating));
+        }
+    };
+
+    public static Comparator<Product> comparatorOf(Sort sort) {
+        switch (sort) {
+            case RELEVANCE:
+                return Product.SORT_RELEVANCE;
+            case PRICE_LOW_TO_HIGH:
+                return Product.SORT_PRICE_LOW_TO_HIGH;
+            case PRICE_HIGH_TO_LOW:
+                return Product.SORT_PRICE_HIGH_TO_LOW;
+            case OVERALL_RATING:
+                return Product.SORT_OVERALL_RATING;
+            case SKINTONE_RATING:
+                return Product.SORT_SKINTONE_RATING;
+        }
+        return Product.SORT_RELEVANCE;
     }
 
 }

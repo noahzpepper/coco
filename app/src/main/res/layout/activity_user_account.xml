@@ -97,13 +97,11 @@
 
             <ImageButton
                 android:id="@+id/addCompanyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="10dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:background="#EDFFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/tableCompanies"
-                app:layout_constraintStart_toEndOf="@+id/titleCompanies"
+                app:layout_constraintBottom_toBottomOf="@+id/titleCompanies"
+                app:layout_constraintStart_toStartOf="@+id/addIngredientButton"
                 app:layout_constraintTop_toTopOf="@+id/titleCompanies"
                 app:srcCompat="@drawable/addbutton" />
 

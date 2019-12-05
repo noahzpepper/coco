@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="?android:selectableItemBackground"
-        app:layout_constraintEnd_toStartOf="@id/upload_text"
+        app:layout_constraintEnd_toStartOf="@id/addReviewUploadText"
         app:layout_constraintStart_toStartOf="@+id/addReviewSubmit"
         app:layout_constraintTop_toBottomOf="@+id/review_box"
         app:srcCompat="@drawable/upload_image" />
@@ -143,12 +143,12 @@
         app:srcCompat="@drawable/submit_button" />
 
     <TextView
-        android:id="@+id/upload_text"
+        android:id="@+id/addReviewUploadText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Upload Image"
+        android:text="0 Upload Images"
         android:textColor="#1C1C1C"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/addReviewUpload"

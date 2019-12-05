@@ -16,16 +16,29 @@
             android:id="@+id/detailProductName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="75dp"
             android:fontFamily="@font/montserrat"
             android:maxLines="3"
             android:text="Product Name - Cosmetic Product"
             android:textColor="#303030"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/placeholder"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detailProductCompanyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#303030"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/detailProductName"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductName" />
 
         <ImageView
             android:id="@+id/detailProductImage"
@@ -44,7 +57,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailProductName"
+            app:layout_constraintTop_toBottomOf="@+id/detailProductCompanyText"
             app:srcCompat="@drawable/frame" />
 
         <ImageView
@@ -52,9 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginTop="32dp"
             app:layout_constraintStart_toEndOf="@+id/frame"
-            app:layout_constraintTop_toBottomOf="@+id/detailProductName"
+            app:layout_constraintTop_toTopOf="@+id/frame"
             app:srcCompat="@drawable/star" />
 
         <ImageView
@@ -72,12 +84,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat"
             android:text="0.0     overall"
             android:textColor="#525252"
             app:layout_constraintStart_toEndOf="@+id/star1"
-            app:layout_constraintTop_toBottomOf="@+id/detailProductName" />
+            app:layout_constraintTop_toTopOf="@+id/star1" />
 
         <TextView
             android:id="@+id/detailSkintoneMatch"

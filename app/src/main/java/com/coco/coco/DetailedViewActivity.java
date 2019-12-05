@@ -1,8 +1,11 @@
 package com.coco.coco;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -12,17 +15,26 @@ import android.widget.TextView;
 
 import com.coco.coco.model.Price;
 import com.coco.coco.model.Product;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailedViewActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int REVIEW_CODE = 1;
     private Product product;
 
     private TextView descriptionTV, ingredientsTV, imagesTV, reviewText, reviewOverallRating, reviewSkintoneRating;
@@ -37,7 +49,7 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
     private ImageView detailSellerContainer3;
     private ImageView reviewOverallStar;
     private ImageView reviewSkintoneStar;
-    private TextView detailProductName, detailRating, detailSkintoneMatch, detailPrice,
+    private TextView detailProductName, detailProductCompanyText, detailRating, detailSkintoneMatch, detailPrice,
             detailSellerText1, detailSellerText2, detailSellerText3;
     private HorizontalScrollView imageScrollView;
     private Button detailAddReviewButton;
@@ -62,6 +74,7 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         detailSellerContainer2 = findViewById(R.id.detailSellerContainer2);
         detailSellerContainer3 = findViewById(R.id.detailSellerContainer3);
         detailProductName = findViewById(R.id.detailProductName);
+        detailProductCompanyText = findViewById(R.id.detailProductCompanyText);
         detailRating = findViewById(R.id.detailRating);
         detailPrice = findViewById(R.id.detailPrice);
         detailSkintoneMatch = findViewById(R.id.detailSkintoneMatch);
@@ -115,6 +128,7 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         product.loadProductImageIntoImageView(detailProductImage);
         product.priceLowest().loadLogoIntoImageView(detailSellerImage);
         detailProductName.setText(product.getName());
+        detailProductCompanyText.setText(String.format(Locale.US, "by %s", product.getCompany()));
         detailPrice.setText(String.format(Locale.US, "$%.2f", product.priceLowest().getPrice()));
         detailRating.setText(String.format(Locale.US, "%s     overall", product.calcOverallRating()));
         detailSkintoneMatch.setText(String.format(Locale.US, "%s     skin tone match", product.calcSkintoneRating()));
@@ -170,6 +184,14 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
         reviewOverallRating.setText(String.format(Locale.US, "%s     overall", product.calcOverallRating()));
         reviewSkintoneRating.setText(String.format(Locale.US, "%s     skin tone match", product.calcSkintoneRating()));
         reviewAdapter.setData(product.getReviews());
+
+        //has user reviewed this product already? if so, hide review button
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) { throw new IllegalStateException(); }
+        if (product.reviewedByUser(user.getUid())) {
+            detailAddReviewButton.setEnabled(false);
+            detailAddReviewButton.setAlpha(0);
+        }
     }
 
 
@@ -201,11 +223,35 @@ public class DetailedViewActivity extends AppCompatActivity implements View.OnCl
             case R.id.detailAddReviewButton:
                 Intent intent = new Intent(DetailedViewActivity.this, AddReviewActivity.class);
                 intent.putExtra("product", product);
-                startActivity(intent);
+                startActivityForResult(intent, REVIEW_CODE);
                 break;
             case R.id.detailedViewBackButton:
                 onBackPressed();
                 break;
         }
     }
+
+    //when the user submits a review, return them here to refresh the reviews on the product page
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REVIEW_CODE) {
+            if (resultCode == RESULT_OK) {
+                Log.d("YESYES", "NO");
+                DatabaseReference productRoot = FirebaseDatabase.getInstance().getReference("products");
+                productRoot.child(product.getId()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        product = dataSnapshot.getValue(Product.class);
+                        loadProduct();
+                        loadReviews();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {}
+                });
+            }
+        }
+    }
+
 }
