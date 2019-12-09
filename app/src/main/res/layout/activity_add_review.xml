@@ -112,7 +112,7 @@
             android:background="@null"
             android:gravity="top|left"
             android:hint="Type review here..."
-            android:imeOptions="actionSearch"
+            android:imeOptions="actionDone"
             android:singleLine="true"
             android:textColor="#656565"
             android:textSize="18sp" />

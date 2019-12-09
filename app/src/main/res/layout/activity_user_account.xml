@@ -25,6 +25,7 @@
         android:layout_width="51dp"
         android:layout_height="51dp"
         android:layout_marginStart="10dp"
+        android:background="?android:selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="@+id/accountNavbar"
         app:layout_constraintStart_toStartOf="@+id/accountNavbar"
         app:layout_constraintTop_toTopOf="@+id/accountNavbar"
