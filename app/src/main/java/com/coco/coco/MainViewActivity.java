@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
 
 import com.coco.coco.model.Price;
 import com.google.android.material.tabs.TabLayout;
@@ -59,13 +58,6 @@ public class MainViewActivity extends AppCompatActivity implements View.OnClickL
 
         Price.initializeLogos();
         filter = ProductFilter.FILTER_DEFAULT;
-
-        //temporary for adding products to db
-        try {
-            new ProductFactory().run();
-        } catch (AssertionError e) {
-            Toast.makeText(this, "Product not added to database: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
     }
 
     @Override
