@@ -19,7 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 public class MainViewActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private static final String TAG = "MAIN";
 
-    public static final String[] CATEGORIES = new String[]{"All", "Face", "Eyes", "Lips", "Brows", "Skincare"};
+    public static final String[] CATEGORIES = new String[]{"All", "Face", "Eyes", "Lips", "Brow", "Skincare"};
     private static final int FILTER_CODE = 1;
 
     private ProductFilter filter;
