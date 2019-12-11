@@ -137,7 +137,7 @@ public class Product implements Serializable {
 
     public ArrayList<Review> getReviews() {
         if (reviews == null) {
-            return new ArrayList<>();
+            reviews = new ArrayList<>();
         }
         return reviews;
     }
