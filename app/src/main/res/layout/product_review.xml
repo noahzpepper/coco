@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/reviewCardRoot"
+    android:padding="10sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/individualReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginBottom="20dp"
+        tools:context=".DetailedViewActivity">
+
+        <ImageView
+            android:id="@+id/mReviewSkintoneStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/mReviewName"
+            app:layout_constraintStart_toStartOf="@id/mReviewOverallStar"
+            app:layout_constraintTop_toBottomOf="@id/mReviewOverallStar"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/mReviewOverallStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="165dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/mReviewSkintoneStar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mReviewName"
+            app:srcCompat="@drawable/star" />
+
+        <ImageView
+            android:id="@+id/mReviewPic"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/account_button"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mReviewSkintoneRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#525252"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/mReviewSkintoneStar"
+            app:layout_constraintStart_toEndOf="@id/mReviewSkintoneStar"
+            app:layout_constraintTop_toTopOf="@id/mReviewSkintoneStar" />
+
+        <TextView
+            android:id="@+id/mReviewOverallRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#525252"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/mReviewOverallStar"
+            app:layout_constraintStart_toEndOf="@id/mReviewOverallStar"
+            app:layout_constraintTop_toTopOf="@id/mReviewOverallStar" />
+
+        <TextView
+            android:id="@+id/mReviewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/montserrat"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/mReviewPic"
+            app:layout_constraintStart_toEndOf="@id/mReviewPic"
+            app:layout_constraintTop_toTopOf="@id/mReviewPic" />
+
+        <TextView
+            android:id="@+id/mReviewText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@id/mReviewSkintoneRating"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/mReviewPic"
+            app:layout_constraintTop_toBottomOf="@id/mReviewSkintoneStar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
