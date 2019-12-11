@@ -2,5 +2,5 @@
 
 *The Cosmetics Community*
 
-Latest apk currently located at: [app-debug-dec5.apk](/app-debug-dec5.apk)
+Latest apk currently located at: [app-debug.apk](/app-debug.apk)
 
